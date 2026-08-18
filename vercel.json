@@ -1,0 +1,20 @@
+{
+    "redirects": [
+        {
+            "source": "/admin/:path*",
+            "destination": "https://everydaycarats.sanity.studio/",
+            "permanent": false
+        },
+        {
+            "source": "/studio/:path*",
+            "destination": "https://everydaycarats.sanity.studio/",
+            "permanent": false
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}

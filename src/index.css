@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ── Load tailwind.config.js so custom tokens are recognized ── */
+@config "../tailwind.config.js";
+
+@theme {
+  /* Colors */
+  --color-theme-dark: #141414;
+  --color-theme-light: #ffffff;
+
+  /* Fonts */
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-nata: 'Nata Sans', sans-serif;
+
+  /* Breakpoints — Figma design widths (375px base is mobile-first default) */
+  /* md: 768px is already the Tailwind v4 default */
+  --breakpoint-desktop: 1440px;
+}
+
+/* ── Fixed-header height (Home.tsx) — differs across the three Figma breakpoints ── */
+:root {
+  --header-h: 107px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 147px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --header-h: 113px;
+  }
+}
+
+/* ── Configurator 3D canvas cap (ConfiguratorStage.tsx) ──
+   На низких экранах (iPhone SE — 667px и подобные) канвас ужимается до 260px,
+   иначе он съедает высоту и выталкивает шаги с кнопкой Next за экран. */
+:root {
+  --viewer-cap: 750px;
+}
+
+@media (max-height: 700px) {
+  :root {
+    --viewer-cap: 260px;
+  }
+}
+
+/* ── Base layer overrides  ── */
+@layer base {
+
+  html,
+  body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #141414;
+    font-family: 'Nata Sans', sans-serif;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
